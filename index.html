@@ -339,38 +339,89 @@
         
     </div>
 </section>
+     <!-- SECTION CONTACTS & HOURS -->
+<section id="contacts" style="padding: 80px 5%; background-color: var(--cream); border-top: 1px solid var(--sand);">
+    <div style="max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+        
+        <!-- Левая колонка: График -->
+        <div>
+            <span style="display: block; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 15px;">Години роботи</span>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 30px;">Завжди відкриті</h2>
+            
+            <div style="border-bottom: 1px solid var(--sand); padding: 12px 0; display: flex; justify-content: space-between;">
+                <span style="color: var(--mid);">Понеділок — П'ятниця</span>
+                <span style="font-weight: 600; color: var(--accent);">24/7</span>
+            </div>
+            <div style="border-bottom: 1px solid var(--sand); padding: 12px 0; display: flex; justify-content: space-between;">
+                <span style="color: var(--mid);">Субота</span>
+                <span style="font-weight: 600; color: var(--accent);">24/7</span>
+            </div>
+            <div style="border-bottom: 1px solid var(--sand); padding: 12px 0; display: flex; justify-content: space-between;">
+                <span style="color: var(--mid);">Неділя</span>
+                <span style="font-weight: 600; color: var(--accent);">24/7</span>
+            </div>
+            <div style="border-bottom: 1px solid var(--sand); padding: 12px 0; display: flex; justify-content: space-between;">
+                <span style="color: var(--mid);">Свята</span>
+                <span style="font-weight: 600; color: var(--accent);">24/7</span>
+            </div>
+        </div>
+
+        <!-- Правая колонка: Контакты -->
+        <div>
+            <span style="display: block; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 15px;">Контакти</span>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 30px;">Зв'яжіться з нами</h2>
+            
+            <a href="https://www.instagram.com/smachna_kazka" target="_blank" style="text-decoration: none; display: flex; align-items: center; background: rgba(214, 186, 150, 0.1); padding: 20px; margin-bottom: 15px; border: 1px solid rgba(214, 186, 150, 0.3);">
+                <span style="font-size: 1.5rem; margin-right: 15px;">📸</span>
+                <div>
+                    <span style="display: block; font-size: 0.65rem; text-transform: uppercase; color: var(--mid); letter-spacing: 0.1em;">Instagram</span>
+                    <span style="color: var(--brown); font-weight: 500;">@smachna_kazka</span>
+                </div>
+            </a>
+
+            <div style="display: flex; align-items: center; background: rgba(214, 186, 150, 0.1); padding: 20px; border: 1px solid rgba(214, 186, 150, 0.3);">
+                <span style="font-size: 1.5rem; margin-right: 15px;">💬</span>
+                <div>
+                    <span style="display: block; font-size: 0.65rem; text-transform: uppercase; color: var(--mid); letter-spacing: 0.1em;">Direct / Повідомлення</span>
+                    <span style="color: var(--brown); font-weight: 500;">Пишіть у Direct Instagram</span>
+                </div>
+            </div>
+        </div>
+</section>
+ <section id="order" style="background: var(--warm); border-top: 1px solid var(--sand); padding: 80px 5%;">
     <div style="max-width: 600px; margin: 0 auto;">
         <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; text-align: center; margin-bottom: 10px;">Оформити замовлення</h2>
-        <p style="text-align: center; margin-bottom: 40px; color: var(--mid);">Заповніть форму — ми зв'язємося з вами якнайшвидше та узгодимо деталі замовлення.</p>
+        <p style="text-align: center; margin-bottom: 40px; color: var(--mid);">Заповніть форму — ми зв'яжемося з вами якнайшвидше.</p>
         
-        <form>
+        <!-- Ссылка на Formspree с твоим кодом mjgpkwyk -->
+        <form action="https://formspree.io/f/mjgpkwyk" method="POST"> 
             <div style="margin-bottom: 20px;">
                 <label style="display: block; margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid);">Ваше ім'я</label>
-                <input type="text" placeholder="Оксана" style="width: 100%; padding: 15px; border: 1px solid var(--sand); background: var(--white); font-family: inherit;">
+                <input type="text" name="name" required placeholder="Оксана" style="width: 100%; padding: 15px; border: 1px solid var(--sand); background: var(--white); font-family: inherit;">
             </div>
             
             <div style="margin-bottom: 20px;">
                 <label style="display: block; margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid);">Телефон</label>
-                <input type="tel" placeholder="+380 XX XXX XX XX" style="width: 100%; padding: 15px; border: 1px solid var(--sand); background: var(--white); font-family: inherit;">
+                <input type="tel" name="phone" required placeholder="+380 XX XXX XX XX" style="width: 100%; padding: 15px; border: 1px solid var(--sand); background: var(--white); font-family: inherit;">
             </div>
             
             <div style="margin-bottom: 20px;">
                 <label style="display: block; margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid);">Що вас цікавить?</label>
-                <select style="width: 100%; padding: 15px; border: 1px solid var(--sand); background: var(--white); font-family: inherit;">
-                    <option>Оберіть категорію...</option>
-                    <option>Бокси</option>
-                    <option>Цукерки вагові</option>
-                    <option>Шоколадні пасти</option>
-                    <option>Східні солодощі</option>
+                <select name="category" style="width: 100%; padding: 15px; border: 1px solid var(--sand); background: var(--white); font-family: inherit;">
+                    <option value="не обрано">Оберіть категорію...</option>
+                    <option value="Бокси">Бокси</option>
+                    <option value="Цукерки вагові">Цукерки вагові</option>
+                    <option value="Шоколадні пасти">Шоколадні пасти</option>
+                    <option value="Східні солодощі">Східні солодощі</option>
                 </select>
             </div>
             
             <div style="margin-bottom: 30px;">
                 <label style="display: block; margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid);">Коментар до замовлення</label>
-                <textarea placeholder="Вкажіть вагу, смак, побажання..." style="width: 100%; padding: 15px; border: 1px solid var(--sand); background: var(--white); font-family: inherit; min-height: 120px;"></textarea>
+                <textarea name="comment" placeholder="Вкажіть вагу, смак или побажання..." style="width: 100%; padding: 15px; border: 1px solid var(--sand); background: var(--white); font-family: inherit; min-height: 120px;"></textarea>
             </div>
             
-            <button type="submit" class="hero-btn" style="width: 100%; border: none; cursor: pointer; background: var(--brown); color: var(--cream); padding: 16px; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem;">Надіслати замовлення</button>
+            <button type="submit" style="width: 100%; background: var(--brown); color: var(--cream); padding: 16px; border: none; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem; cursor: pointer;">Надіслати замовлення</button>
         </form>
     </div>
 </section>
