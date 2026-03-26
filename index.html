@@ -431,24 +431,24 @@
 </footer>
 
 <script>
-  // Скрипт переключения категорий
-  const btns = document.querySelectorAll('.tab-btn');
+const btns = document.querySelectorAll('.tab-btn');
   const cats = document.querySelectorAll('.menu-cat');
 
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Убираем активный класс у всех кнопок
+      // 1. Убираем выделение со всех кнопок и выделяем ту, на которую нажали
       btns.forEach(b => b.classList.remove('active'));
-      // Добавляем текущей
       btn.classList.add('active');
-      
-      const target = btn.dataset.cat;
-      
-      // Скрываем все категории и показываем нужную
-      cats.forEach(c => {
-        c.classList.remove('active');
-        if(c.id === 'cat-' + target) {
-          c.classList.add('active');
+
+      // 2. Узнаем, какую категорию выбрал пользователь
+      const target = btn.getAttribute('data-cat');
+
+      // 3. Принудительно показываем нужные товары и скрываем остальные
+      cats.forEach(cat => {
+        if (cat.id === 'cat-' + target) {
+          cat.style.display = 'grid';  // Включаем отображение сеткой
+        } else {
+          cat.style.display = 'none';  // Полностью скрываем блок
         }
       });
     });
