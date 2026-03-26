@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Смачна Казка — Магазин солодощів</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #faf7f2; --warm: #f5ede0; --sand: #e8d9c5;
+    --brown: #3d2b1f; --mid: #7a5c45; --accent: #c87941;
+    --light-text: #9e8272; --white: #ffffff;
+  }
+  body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--brown); overflow-x: hidden; line-height: 1.6; }
+  
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--sand); padding: 0 5%; display: flex; justify-content: space-between; align-items: center; height: 65px; }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--brown); text-decoration: none; letter-spacing: -0.02em; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.25s; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  #hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(160deg, var(--cream) 0%, var(--warm) 60%, var(--sand) 100%); padding: 120px 5% 60px; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 10vw, 7rem); font-weight: 600; line-height: 0.9; margin-bottom: 28px; }
+  .hero-title em { font-style: italic; color: var(--accent); }
+  .hero-btn { display: inline-block; padding: 16px 45px; background: var(--brown); color: var(--cream); font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: 0.3s; }
+  .hero-btn:hover { background: var(--accent); transform: translateY(-2px); }
+
+  /* MENU SECTION */
+  section { padding: 80px 5%; }
+  .section-title { font-family: 'Cormorant Garamond', serif; text-align: center; font-size: 2.5rem; margin-bottom: 40px; }
+  
+  .menu-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 50px; justify-content: center; }
+  .tab-btn { padding: 10px 22px; border: 1px solid var(--sand); background: var(--white); color: var(--mid); cursor: pointer; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; transition: 0.3s; font-weight: 500; }
+  .tab-btn.active { background: var(--brown); color: var(--cream); border-color: var(--brown); }
+
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; max-width: 1300px; margin: 0 auto; }
+  .menu-cat { display: none; width: 100%; grid-column: 1 / -1; display: grid; grid-template-columns: inherit; gap: inherit; }
+  .menu-cat.active { display: grid; }
+
+  .menu-card { background: var(--white); padding: 20px; border: 1px solid var(--sand); border-radius: 4px; display: flex; flex-direction: column; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+  .menu-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(61,43,31,0.05); }
+  
+  /* Стили для изображений в карточках */
+  .card-img-container { width: 100%; height: 180px; margin-bottom: 15px; border-radius: 2px; overflow: hidden; background-color: var(--warm); }
+  .card-img { width: 100%; height: 100%; object-fit: contain; /* Изображение масштабируется, чтобы вместиться */ }
+  
+  .card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 5px; color: var(--brown); }
+  .card-brand { font-size: 0.75rem; color: var(--light-text); text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.05em; }
+  
+  .price-info { margin-top: auto; border-top: 1px solid var(--cream); padding-top: 12px; }
+  .price-row { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; }
+  .price-val { color: var(--accent); font-weight: 600; }
+  .price-single { font-weight: 600; color: var(--accent); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-title { font-size: 3.5rem; }
+    .nav-links { display: none; }
+    .menu-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Смачна Казка</a>
+  <div class="nav-links">
+    <a href="#menu">Каталог</a>
+    <a href="#order">Замовити</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <h1 class="hero-title">Смачна<br><em>Казка</em></h1>
+  <p style="margin-bottom: 35px; color: var(--mid); max-width: 500px; font-size: 1.1rem;">Найкращий вибір солодощів — бокси, цукерки, пасти, пахлава та багато іншого.</p>
+  <a href="#menu" class="hero-btn">Відкрити меню</a>
+</section>
+
+<section id="menu">
+  <h2 class="section-title">Каталог Солодощів</h2>
+  
+  <div class="menu-tabs">
+    <button class="tab-btn active" data-cat="boxes">Бокси</button>
+    <button class="tab-btn" data-cat="candies">Цукерки вагові</button>
+    <button class="tab-btn" data-cat="pastes">Шоколадні пасти</button>
+    <button class="tab-btn" data-cat="eastern">Східні солодощі</button>
+    <button class="tab-btn" data-cat="other">Інше</button>
+  </div>
+
+  <div class="menu-grid">
+    
+    <div class="menu-cat active" id="cat-boxes">
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/box-asorti.jpg" class="card-img" alt="Бокс Асорті">
+        </div>
+        <div class="card-name">Бокс Асорті цукерок</div>
+        <div class="card-brand">≈50 видів цукерок</div>
+        <div class="price-info">
+          <div class="price-row"><span>1,5 кг</span><span class="price-val">330 грн</span></div>
+          <div class="price-row"><span>2,5 кг</span><span class="price-val">550 грн</span></div>
+          <div class="price-row"><span>5 кг</span><span class="price-val">1 100 грн</span></div>
+        </div>
+      </div>
+      
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/zhele-box.jpg" class="card-img" alt="Бокси з желейками">
+        </div>
+        <div class="card-name">Бокси з желейками</div>
+        <div class="card-brand">Асорті фігурних желейок</div>
+        <div class="price-info">
+          <div class="price-row"><span>0,35 кг</span><span class="price-val">200 грн</span></div>
+          <div class="price-row"><span>1 кг</span><span class="price-val">520 грн</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-cat" id="cat-candies">
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/bifesti.jpg" class="card-img" alt="Біфесті">
+        </div>
+        <div class="card-name">Біфесті / Патрон</div>
+        <div class="card-brand">ТМ "Лукас"</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-single">Ціна за запитом</span></div>
+        </div>
+      </div>
+      
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/kotusiki.jpg" class="card-img" alt="Пташка-Мармелашка">
+        </div>
+        <div class="card-name">Пташка-Мармелашка</div>
+        <div class="card-brand">ТМ "Жако"</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-single">Ціна за запитом</span></div>
+        </div>
+      </div>
+      
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/zabodayka.jpg" class="card-img" alt="Забодайка">
+        </div>
+        <div class="card-name">Забодайка</div>
+        <div class="card-brand">ТМ "ХБФ"</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-single">Ціна за запитом</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-cat" id="cat-pastes">
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/choko-paste.jpg" class="card-img" alt="Шоколадна паста">
+        </div>
+        <div class="card-name">Шоколадні пасти</div>
+        <div class="card-brand">Скітлс, Марс, Кіндер та ін.</div>
+        <div class="price-info">
+          <div class="price-row"><span>500 г</span><span class="price-val">150 грн</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-cat" id="cat-eastern">
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/amanti.jpg" class="card-img" alt="Цукерки Аманті">
+        </div>
+        <div class="card-name">Цукерки "Аманті" Асорті</div>
+        <div class="card-brand">Подарунковий бокс</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-val">330 грн</span></div>
+        </div>
+      </div>
+      
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/halva.jpg" class="card-img" alt="Халва Caramel">
+        </div>
+        <div class="card-name">Халва TM Caramel</div>
+        <div class="card-brand">Ванільна / з арахісом</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-single">Вагова</span></div>
+        </div>
+      </div>
+      
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/pahlova.jpg" class="card-img" alt="Пахлава медова">
+        </div>
+        <div class="card-name">Пахлава медова</div>
+        <div class="card-brand">Handmade</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-val">260 грн</span></div>
+        </div>
+      </div>
+      
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/lukum.jpg" class="card-img" alt="Лукум палички">
+        </div>
+        <div class="card-name">Лукум палички </div>
+        <div class="card-brand">Асортимент</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-val">299 грн</span></div>
+        </div>
+      </div>
+
+       <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/lukumm.jpg" class="card-img" alt="Лукум ">
+        </div>
+        <div class="card-name">Лукум  </div>
+        <div class="card-brand">Асортимент</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-val">260 грн</span></div>
+        </div>
+      </div>
+      
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/churchkhela.jpg" class="card-img" alt="Чурчхела">
+        </div>
+        <div class="card-name">Чурчхела</div>
+        <div class="card-brand">Грузинська</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 шт</span><span class="price-val">150 грн</span></div>
+        </div>
+      </div>
+      
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/kokos.jpg" class="card-img" alt="Цукерки Кокос">
+        </div>
+        <div class="card-name">Цукерки "Кокос"</div>
+        <div class="card-brand">Коробка</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-val">330 грн</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-cat" id="cat-other">
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/kozinaki.jpg" class="card-img" alt="Козинаки">
+        </div>
+        <div class="card-name">Козинаки "Палички"</div>
+        <div class="card-brand">Кунжут / арахіс</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-val">200 грн</span></div>
+        </div>
+      </div>
+      
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/kranchi.jpg" class="card-img" alt="Кранчі">
+        </div>
+        <div class="card-name">Кранчі</div>
+        <div class="card-brand">Мікс (арахіс в оболонці)</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 кг</span><span class="price-val">280 грн</span></div>
+        </div>
+      </div>
+      
+      <div class="menu-card">
+        <div class="card-img-container">
+          <img src="img/spices.jpg" class="card-img" alt="Спеції">
+        </div>
+        <div class="card-name">Натуральні спеції</div>
+        <div class="card-brand">Асортимент</div>
+        <div class="price-info">
+          <div class="price-row"><span>1 шт</span><span class="price-val">45 грн</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="order" style="background: var(--warm); border-top: 1px solid var(--sand);">
+  <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 20px;">Зробити замовлення</h2>
+    <p style="margin-bottom: 30px; color: var(--light-text);">Залиште ваші контакти, і ми зв'яжемося з вами найближчим часом через Instagram або телефон.</p>
+    <a href="https://www.instagram.com/smachna_kazka" target="_blank" class="hero-btn">Написати в Instagram</a>
+  </div>
+</section>
+
+<footer style="padding: 40px 5%; text-align: center; border-top: 1px solid var(--sand); font-size: 0.8rem; color: var(--light-text); letter-spacing: 0.1em; text-transform: uppercase;">
+  &copy; 2024 Смачна Казка. Всі права захищені. <a href="https://www.instagram.com/smachna_kazka" target="_blank" style="color: var(--accent); text-decoration: none;">@smachna_kazka</a>
+</footer>
+
+<script>
+  // Скрипт переключения категорий
+  const btns = document.querySelectorAll('.tab-btn');
+  const cats = document.querySelectorAll('.menu-cat');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Убираем активный класс у всех кнопок
+      btns.forEach(b => b.classList.remove('active'));
+      // Добавляем текущей
+      btn.classList.add('active');
+      
+      const target = btn.dataset.cat;
+      
+      // Скрываем все категории и показываем нужную
+      cats.forEach(c => {
+        c.classList.remove('active');
+        if(c.id === 'cat-' + target) {
+          c.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
