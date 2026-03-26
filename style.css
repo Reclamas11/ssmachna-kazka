@@ -93,7 +93,30 @@ section { padding: 80px 5%; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .hero-title { font-size: 3.5rem; }
-  .nav-links { display: none; }
-  .menu-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    /* 1. Уменьшаем заголовок, чтобы он не распирал экран */
+    .hero-title { 
+        font-size: 2.6rem !important; 
+    }
+
+    /* 2. Прячем ссылки в навигации, чтобы не мешались */
+    .nav-links { display: none !important; }
+
+    /* 3. Две аккуратные колонки товаров */
+    .menu-grid { 
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important; 
+        gap: 10px !important;
+        padding: 0 10px !important;
+    }
+
+    /* 4. Более компактные картинки */
+    .card-img-container {
+        height: 180px !important;
+    }
+
+    /* 5. Магическая защита от пустых полей справа */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        position: relative !important;
+    }
 }
