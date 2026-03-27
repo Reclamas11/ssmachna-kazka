@@ -93,70 +93,67 @@ section { padding: 80px 5%; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    /* 1. Навигация: лого и меню друг под другом */
+    /* 1. Глобальный сброс: запрещаем любому элементу вылезать за экран */
+    * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 2. Центрируем навигацию */
     nav {
         flex-direction: column !important;
-        padding: 10px 0 !important;
+        align-items: center !important;
+        padding: 15px 0 !important;
         height: auto !important;
-        position: relative !important; /* Убираем фиксацию сверху, чтобы не перекрывала */
-    }
-    .nav-logo {
-        margin-bottom: 10px;
+        width: 100% !important;
     }
     .nav-links {
         display: flex !important;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px !important;
-        width: 100%;
-        padding: 0 10px;
+        justify-content: center !important;
+        gap: 10px !important;
+        padding: 10px 0 !important;
     }
 
-    /* 2. Блок Hero: уменьшаем и центрируем */
+    /* 3. Исправляем блок Hero (шапку) */
     #hero {
-        padding-top: 50px !important; /* Отступ от навигации */
-        min-height: auto !important;
+        width: 100% !important;
+        padding: 40px 15px !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
     }
     .hero-title { 
-        font-size: 2.6rem !important; 
+        font-size: 2.4rem !important; 
+        width: 100% !important;
     }
+    .hero-title br { display: none; } /* Убираем перенос строки, если он ломает центровку */
 
-    /* 3. Статистика (Те самые "1000+"): в колонку */
-    #stats-block .flex-row {
+    /* 4. Сетка товаров: делаем одну колонку, чтобы точно влезло */
+    .menu-grid { 
+        display: flex !important;
         flex-direction: column !important;
-        align-items: center;
-        gap: 30px !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 0 15px !important;
+    }
+    .menu-card {
+        width: 100% !important;
+        max-width: 300px !important; /* Чтобы карточка не была на весь экран гигантской */
+        margin-bottom: 20px;
     }
 
-    /* 4. Кнопки категорий: переносятся на новую строку */
+    /* 5. Кнопки категорий */
     .menu-tabs {
         flex-wrap: wrap !important;
         justify-content: center !important;
-        gap: 10px !important;
-        padding: 0 10px !important;
-    }
-    .tab-btn {
-        font-size: 0.8rem !important;
-        padding: 8px 15px !important;
-    }
-
-    /* 5. Товары: ДВЕ колонки (по 140px), чтобы всё поместилось */
-    .menu-grid { 
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important; 
-        gap: 15px !important;
-        padding: 0 15px !important;
-    }
-
-    /* 6. Блок "О нас": тоже в колонку */
-    #about-block {
-        flex-direction: column-reverse !important;
-        padding: 40px 15px !important;
-    }
-
-    /* 7. ФИНАЛ: Разрешаем вертикальный скролл, запрещаем горизонтальный */
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
-        overflow-y: auto; /* Явно разрешаем скроллить вниз */
+        width: 100% !important;
     }
 }
