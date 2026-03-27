@@ -1,25 +1,24 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { 
+    box-sizing: border-box !important; 
+    margin: 0; 
+    padding: 0; 
+}
 
-:root {
-  --cream: #faf7f2;
-  --warm: #f5ede0;
-  --sand: #e8d9c5;
-  --brown: #3d2b1f;
-  --mid: #7a5c45;
-  --accent: #c87941;
-  --light-text: #9e8272;
-  --white: #ffffff;
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important; /* Убирает белую полосу справа */
+    position: relative;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
     font-family: 'Jost', sans-serif;
     background: var(--cream);
     color: var(--brown);
-    overflow-x: hidden;
     line-height: 1.6;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
 }
 
 /* NAV */
@@ -34,10 +33,10 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px; /* Заменили 5% на фиксированные 20px */
+    padding: 15px 20px;
     border-bottom: 1px solid var(--sand);
-    box-sizing: border-box; /* ЭТО ОБЯЗАТЕЛЬНО */
-    width: 100%; /* ЭТО ОБЯЗАТЕЛЬНО */
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 .nav-logo { 
   font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; 
@@ -134,28 +133,33 @@ section { padding: 80px 5%; }
     }
 
     /* 3. Исправляем блок Hero (шапку) */
-    #hero {
-        width: 100% !important;
-        padding: 40px 15px !important;
-        text-align: center !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-    .hero-title { 
-        font-size: 2.4rem !important; 
-        width: 100% !important;
-    }
-    .hero-title br { display: none; } /* Убираем перенос строки, если он ломает центровку */
+    /* 3. Исправляем блок Hero (шапку) */
+#hero {
+    width: 100% !important;
+    padding: 40px 15px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin: 0 !important; /* Добавь это здесь */
+}
 
-    /* 4. Сетка товаров: делаем одну колонку, чтобы точно влезло */
-    .menu-grid { 
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 100% !important;
-        padding: 0 15px !important;
-    }
+.hero-title {
+    font-size: 2.4rem !important;
+    width: 100% !important;
+    margin: 0 auto !important; /* И это для страховки заголовка */
+}
+
+/* 4. Сетка товаров: делаем одну колонку */
+.menu-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 15px !important;
+    margin: 0 !important; /* Добавь эту строку */
+}
+}
     .menu-card {
         width: 100% !important;
         max-width: 300px !important; /* Чтобы карточка не была на весь экран гигантской */
