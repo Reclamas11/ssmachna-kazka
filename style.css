@@ -93,41 +93,70 @@ section { padding: 80px 5%; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    /* 1. Уменьшаем заголовок, чтобы он не распирал экран */
-    .hero-title { 
-        font-size: 2.6rem !important; 
-    }
-
-    /* 2. Навигация: делаем лого по центру, прячем ссылки */
+    /* 1. Навигация: лого и меню друг под другом */
     nav {
         flex-direction: column !important;
         padding: 10px 0 !important;
         height: auto !important;
+        position: relative !important; /* Убираем фиксацию сверху, чтобы не перекрывала */
     }
-    .nav-links { display: none !important; }
+    .nav-logo {
+        margin-bottom: 10px;
+    }
+    .nav-links {
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px !important;
+        width: 100%;
+        padding: 0 10px;
+    }
 
-    /* 3. Кнопки категорий: разрешаем им переноситься на вторую строку */
+    /* 2. Блок Hero: уменьшаем и центрируем */
+    #hero {
+        padding-top: 50px !important; /* Отступ от навигации */
+        min-height: auto !important;
+    }
+    .hero-title { 
+        font-size: 2.6rem !important; 
+    }
+
+    /* 3. Статистика (Те самые "1000+"): в колонку */
+    #stats-block .flex-row {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 30px !important;
+    }
+
+    /* 4. Кнопки категорий: переносятся на новую строку */
     .menu-tabs {
         flex-wrap: wrap !important;
         justify-content: center !important;
-        gap: 8px !important;
+        gap: 10px !important;
         padding: 0 10px !important;
     }
     .tab-btn {
+        font-size: 0.8rem !important;
         padding: 8px 15px !important;
-        font-size: 0.75rem !important;
     }
 
-    /* 4. Сетка товаров: оставляем одну красивую колонку */
+    /* 5. Товары: ДВЕ колонки (по 140px), чтобы всё поместилось */
     .menu-grid { 
-        grid-template-columns: 1fr !important; 
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important; 
+        gap: 15px !important;
         padding: 0 15px !important;
     }
 
-    /* 5. ЖЕЛЕЗОБЕТОННАЯ ЗАЩИТА ОТ КОСИНЫ: запрещаем скролл вправо */
+    /* 6. Блок "О нас": тоже в колонку */
+    #about-block {
+        flex-direction: column-reverse !important;
+        padding: 40px 15px !important;
+    }
+
+    /* 7. ФИНАЛ: Разрешаем вертикальный скролл, запрещаем горизонтальный */
     html, body {
-        overflow-x: hidden !important;
-        width: 100% !important;
-        position: relative !important;
+        overflow-x: hidden;
+        width: 100%;
+        overflow-y: auto; /* Явно разрешаем скроллить вниз */
     }
 }
