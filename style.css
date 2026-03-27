@@ -11,21 +11,33 @@
   --white: #ffffff;
 }
 
-body { 
-  font-family: 'Jost', sans-serif; 
-  background: var(--cream); 
-  color: var(--brown); 
-  overflow-x: hidden; 
-  line-height: 1.6; 
+body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--brown);
+    overflow-x: hidden;
+    line-height: 1.6;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
 }
 
 /* NAV */
-nav { 
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100; 
-  background: rgba(250, 247, 242, 0.92); 
-  backdrop-filter: blur(12px); 
-  display: flex; justify-content: space-between; align-items: center; 
-  padding: 20px 5%; border-bottom: 1px solid var(--sand); 
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px; /* Заменили 5% на фиксированные 20px */
+    border-bottom: 1px solid var(--sand);
+    box-sizing: border-box; /* ЭТО ОБЯЗАТЕЛЬНО */
+    width: 100%; /* ЭТО ОБЯЗАТЕЛЬНО */
 }
 .nav-logo { 
   font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; 
